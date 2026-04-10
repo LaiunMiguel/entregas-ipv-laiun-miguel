@@ -1,0 +1,28 @@
+[gd_scene format=3 uid="uid://bmox664rx4o37"]
+
+[ext_resource type="Texture2D" uid="uid://cpvum6qtstps4" path="res://resources/background.png" id="1_r0du0"]
+[ext_resource type="PackedScene" uid="uid://bjx6basxfkmci" path="res://Player.tscn" id="1_uu6xs"]
+[ext_resource type="Texture2D" uid="uid://bixk5cnv6spnw" path="res://resources/floor.png" id="3_cm0pq"]
+
+[node name="Main" type="Node" unique_id=1770418557]
+
+[node name="Background" type="TextureRect" parent="." unique_id=1061615012]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_r0du0")
+
+[node name="Player" parent="." unique_id=48971848 instance=ExtResource("1_uu6xs")]
+position = Vector2(587, 383)
+
+[node name="Floor" type="TextureRect" parent="." unique_id=58447540]
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -234.0
+grow_horizontal = 2
+grow_vertical = 0
+texture = ExtResource("3_cm0pq")
