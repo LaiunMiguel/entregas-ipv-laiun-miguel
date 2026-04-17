@@ -1,0 +1,137 @@
+[gd_scene format=3 uid="uid://dj443jie25q66"]
+
+[ext_resource type="PackedScene" uid="uid://b3delv3vhgb1q" path="res://entities/player/Player.tscn" id="1"]
+[ext_resource type="Script" uid="uid://dsurc3mwgoygh" path="res://main.gd" id="1_03owx"]
+[ext_resource type="PackedScene" uid="uid://nhktbu2mkudf" path="res://entities/scenary/Floor.tscn" id="2_uu6xs"]
+[ext_resource type="PackedScene" uid="uid://d3n5sui18oopd" path="res://entities/scenary/Tuberia.tscn" id="3_r0du0"]
+[ext_resource type="PackedScene" uid="uid://cgy8vypukmp3e" path="res://Ramp.tscn" id="4_cm0pq"]
+[ext_resource type="PackedScene" uid="uid://cgxnwvbay8rem" path="res://entities/scenary/brick.tscn" id="5_fos0i"]
+[ext_resource type="PackedScene" uid="uid://cmdisfch01ar4" path="res://entities/scenary/Block.tscn" id="6_3dxm6"]
+[ext_resource type="Script" uid="uid://8ji3q53yy51j" path="res://turret_spawner.gd" id="7_lgr22"]
+[ext_resource type="PackedScene" uid="uid://dva7urch5tmum" path="res://entities/enemies/Turret.tscn" id="8_trn2v"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wkp8b"]
+size = Vector2(218, 31)
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_03owx"]
+distance = -410.0
+
+[sub_resource type="LabelSettings" id="LabelSettings_03owx"]
+font_size = 34
+
+[node name="Main" type="Node" unique_id=1009878454]
+script = ExtResource("1_03owx")
+
+[node name="Player" parent="." unique_id=2056930043 instance=ExtResource("1")]
+position = Vector2(73, 481)
+
+[node name="Scenary" type="Node2D" parent="." unique_id=1199257528]
+position = Vector2(406, 258)
+metadata/_edit_group_ = true
+
+[node name="Floor" parent="Scenary" unique_id=405254220 instance=ExtResource("2_uu6xs")]
+position = Vector2(-5, 289)
+
+[node name="Floor2" parent="Scenary" unique_id=1629702865 instance=ExtResource("2_uu6xs")]
+position = Vector2(781, 289)
+
+[node name="Floor3" parent="Scenary" unique_id=798257406 instance=ExtResource("2_uu6xs")]
+position = Vector2(1577, 289)
+
+[node name="Floor4" parent="Scenary" unique_id=1076046515 instance=ExtResource("2_uu6xs")]
+position = Vector2(2593, 290)
+
+[node name="Tuberia" parent="Scenary" unique_id=868909344 instance=ExtResource("3_r0du0")]
+position = Vector2(767, 178)
+
+[node name="Tuberia2" parent="Scenary" unique_id=1364205641 instance=ExtResource("3_r0du0")]
+position = Vector2(1589, 103)
+scale = Vector2(1.5, 2)
+
+[node name="Ramp" parent="Scenary" unique_id=278113414 instance=ExtResource("4_cm0pq")]
+position = Vector2(1910, 192)
+
+[node name="Brick" parent="Scenary" unique_id=85714417 instance=ExtResource("5_fos0i")]
+position = Vector2(49, 140)
+
+[node name="Brick2" parent="Scenary" unique_id=438862274 instance=ExtResource("5_fos0i")]
+position = Vector2(164, 139)
+
+[node name="Brick3" parent="Scenary" unique_id=1867353095 instance=ExtResource("5_fos0i")]
+position = Vector2(228, 139)
+
+[node name="Brick4" parent="Scenary" unique_id=1653320793 instance=ExtResource("5_fos0i")]
+position = Vector2(291, 139)
+
+[node name="Brick5" parent="Scenary" unique_id=520393952 instance=ExtResource("5_fos0i")]
+position = Vector2(354, 139)
+
+[node name="Brick6" parent="Scenary" unique_id=1133591980 instance=ExtResource("5_fos0i")]
+position = Vector2(419, 139)
+
+[node name="Brick7" parent="Scenary" unique_id=1196625326 instance=ExtResource("5_fos0i")]
+position = Vector2(293, -43)
+
+[node name="Block" parent="Scenary" unique_id=508791070 instance=ExtResource("6_3dxm6")]
+position = Vector2(1027, 225)
+
+[node name="Block2" parent="Scenary" unique_id=1054583856 instance=ExtResource("6_3dxm6")]
+position = Vector2(1029, 157)
+
+[node name="Ramp2" parent="Scenary" unique_id=893339423 instance=ExtResource("4_cm0pq")]
+position = Vector2(2260, 194)
+rotation = 1.5707964
+
+[node name="Killer" type="Area2D" parent="." unique_id=1656449796]
+position = Vector2(2484, 559)
+collision_mask = 7
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Killer" unique_id=1997190362]
+position = Vector2(8, 5.5)
+shape = SubResource("RectangleShape2D_wkp8b")
+
+[node name="TurretSpawner" type="Node" parent="." unique_id=1614283375]
+script = ExtResource("7_lgr22")
+enemy_scene = ExtResource("8_trn2v")
+
+[node name="Point1" type="Marker2D" parent="TurretSpawner" unique_id=587975751]
+position = Vector2(699, 309)
+
+[node name="Point2" type="Marker2D" parent="TurretSpawner" unique_id=15519169]
+position = Vector2(1632, 363)
+
+[node name="Point3" type="Marker2D" parent="TurretSpawner" unique_id=29565330]
+position = Vector2(2492, 338)
+
+[node name="Borders" type="StaticBody2D" parent="." unique_id=90312750]
+position = Vector2(407, 258)
+
+[node name="WorldBoundRight" type="CollisionShape2D" parent="Borders" unique_id=745305100]
+visible = false
+position = Vector2(2576, 179)
+rotation = -1.5707964
+shape = SubResource("WorldBoundaryShape2D_03owx")
+
+[node name="WorldBoundLeft" type="CollisionShape2D" parent="Borders" unique_id=285807679]
+visible = false
+rotation = 1.5707964
+shape = SubResource("WorldBoundaryShape2D_03owx")
+
+[node name="GUI" type="CanvasLayer" parent="." unique_id=561868616]
+
+[node name="LoseLabel" type="Label" parent="GUI" unique_id=1123570265]
+visible = false
+anchors_preset = -1
+anchor_top = 0.48225307
+anchor_right = 1.0
+anchor_bottom = 0.5177469
+grow_horizontal = 2
+grow_vertical = 2
+text = "YOU DIE PRESS \"R\" TO RESTART"
+label_settings = SubResource("LabelSettings_03owx")
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[connection signal="body_entered" from="Killer" to="." method="_on_killer_body_entered"]

@@ -1,0 +1,12 @@
+[gd_scene format=3 uid="uid://b0j0q32eh2rnl"]
+
+[ext_resource type="Script" uid="uid://xmjf6o6n7qr0" path="res://entities/player/weapon.gd" id="1_kd6iv"]
+[ext_resource type="PackedScene" uid="uid://dtifju3vfbfjq" path="res://entities/player/BulletWeapon.tscn" id="2_0leno"]
+[ext_resource type="Texture2D" uid="uid://b4yu5v8d5yd3b" path="res://assets/textures/cannon.png" id="2_hd5au"]
+
+[node name="Weapon" type="Node2D" unique_id=675201739]
+script = ExtResource("1_kd6iv")
+BulletScene = ExtResource("2_0leno")
+
+[node name="WeaponSprite" type="Sprite2D" parent="." unique_id=461713394]
+texture = ExtResource("2_hd5au")

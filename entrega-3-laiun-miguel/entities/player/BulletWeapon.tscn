@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://dtifju3vfbfjq"]
+
+[ext_resource type="Script" uid="uid://db2228qhlnmwd" path="res://entities/player/bullet_weapon.gd" id="1_nqbaw"]
+[ext_resource type="Texture2D" uid="uid://dy4fne65rpsc2" path="res://assets/textures/proyectile_player.png" id="1_q2yd3"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_nqbaw"]
+radius = 7.0
+
+[node name="BulletWeapon" type="Node2D" unique_id=1644745438]
+script = ExtResource("1_nqbaw")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=665030087]
+texture = ExtResource("1_q2yd3")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="." unique_id=1631255942]
+
+[node name="Area2D" type="Area2D" parent="." unique_id=287309779]
+collision_layer = 2
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1072354608]
+shape = SubResource("CircleShape2D_nqbaw")
+
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

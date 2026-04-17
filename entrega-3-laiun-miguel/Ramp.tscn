@@ -1,0 +1,32 @@
+[gd_scene format=3 uid="uid://cgy8vypukmp3e"]
+
+[ext_resource type="Texture2D" uid="uid://b4ae3nd83pvap" path="res://assets/textures/ramp.png" id="1_5wdjv"]
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_lamue"]
+a = Vector2(66, -61)
+b = Vector2(-59, 65)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_5wdjv"]
+a = Vector2(-42, -70)
+b = Vector2(-42, 56)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_uq1p1"]
+a = Vector2(66, 65)
+b = Vector2(-59, 65)
+
+[node name="Ramp" type="StaticBody2D" unique_id=278113414]
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1874325972]
+scale = Vector2(2, 2)
+texture = ExtResource("1_5wdjv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=849398950]
+shape = SubResource("SegmentShape2D_lamue")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="." unique_id=2146605036]
+position = Vector2(108, 9)
+shape = SubResource("SegmentShape2D_5wdjv")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="." unique_id=1226825434]
+shape = SubResource("SegmentShape2D_uq1p1")

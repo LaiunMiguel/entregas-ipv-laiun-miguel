@@ -1,0 +1,31 @@
+[gd_scene format=3 uid="uid://b3delv3vhgb1q"]
+
+[ext_resource type="Script" uid="uid://dw2w07n77hx0e" path="res://entities/player/player.gd" id="1_l3c03"]
+[ext_resource type="Texture2D" uid="uid://ysiugeunlxf6" path="res://assets/textures/player.png" id="2"]
+[ext_resource type="PackedScene" uid="uid://b0j0q32eh2rnl" path="res://entities/player/Weapon.tscn" id="3_l3c03"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_eaotn"]
+size = Vector2(64, 64)
+
+[node name="Player" type="CharacterBody2D" unique_id=1641427890]
+collision_layer = 2
+collision_mask = 11
+script = ExtResource("1_l3c03")
+
+[node name="Sprite" type="Sprite2D" parent="." unique_id=2021073959]
+texture = ExtResource("2")
+
+[node name="Weapon" parent="." unique_id=1036930613 instance=ExtResource("3_l3c03")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=992236123]
+position = Vector2(0.0635071, -0.165405)
+shape = SubResource("RectangleShape2D_eaotn")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=235402163]
+position = Vector2(0, -124)
+zoom = Vector2(1.1, 1.1)
+limit_left = 0
+limit_top = -2
+limit_right = 3400
+limit_bottom = 9999998
+position_smoothing_enabled = true
