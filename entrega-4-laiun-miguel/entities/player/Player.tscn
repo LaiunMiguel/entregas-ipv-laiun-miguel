@@ -1,0 +1,104 @@
+[gd_scene format=3 uid="uid://b3delv3vhgb1q"]
+
+[ext_resource type="Script" uid="uid://dw2w07n77hx0e" path="res://entities/player/player.gd" id="1_l3c03"]
+[ext_resource type="Texture2D" uid="uid://l54vgvqqdcv1" path="res://assets/textures/mario_and_items.png" id="2_l3c03"]
+[ext_resource type="PackedScene" uid="uid://b0j0q32eh2rnl" path="res://entities/player/Weapon.tscn" id="3_l3c03"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l3c03"]
+atlas = ExtResource("2_l3c03")
+region = Rect2(54, 72, 18, 18)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eaotn"]
+atlas = ExtResource("2_l3c03")
+region = Rect2(0, 72, 18, 18)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g3lhm"]
+atlas = ExtResource("2_l3c03")
+region = Rect2(126, 72, 18, 18)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q57vx"]
+atlas = ExtResource("2_l3c03")
+region = Rect2(144, 72, 18, 18)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4pwj0"]
+atlas = ExtResource("2_l3c03")
+region = Rect2(72, 72, 18, 18)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fmb3c"]
+atlas = ExtResource("2_l3c03")
+region = Rect2(90, 72, 18, 18)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rl6fg"]
+atlas = ExtResource("2_l3c03")
+region = Rect2(108, 72, 18, 18)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_q57vx"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l3c03")
+}],
+"loop": true,
+"name": &"death",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_eaotn")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g3lhm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q57vx")
+}],
+"loop": true,
+"name": &"jump",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4pwj0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fmb3c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rl6fg")
+}],
+"loop": true,
+"name": &"move",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_eaotn"]
+size = Vector2(10.5, 14)
+
+[node name="Player" type="CharacterBody2D" unique_id=1641427890 groups=["player"]]
+collision_layer = 2
+script = ExtResource("1_l3c03")
+
+[node name="Sprite" type="AnimatedSprite2D" parent="." unique_id=1417117623]
+sprite_frames = SubResource("SpriteFrames_q57vx")
+animation = &"death"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=992236123]
+position = Vector2(-0.25, 2)
+shape = SubResource("RectangleShape2D_eaotn")
+
+[node name="WeaponContainer" type="Node2D" parent="." unique_id=2085558262]
+
+[node name="Left" type="Marker2D" parent="WeaponContainer" unique_id=645280957]
+position = Vector2(-5, 3)
+
+[node name="Weapon" parent="WeaponContainer" unique_id=1036930613 instance=ExtResource("3_l3c03")]
+position = Vector2(5, 3)
+scale = Vector2(0.3, 0.3)
+
+[node name="Right" type="Marker2D" parent="WeaponContainer" unique_id=1559966256]
+position = Vector2(5, 3)

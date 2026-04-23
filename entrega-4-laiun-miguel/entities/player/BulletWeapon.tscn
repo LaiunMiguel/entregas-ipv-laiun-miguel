@@ -1,0 +1,66 @@
+[gd_scene format=3 uid="uid://dtifju3vfbfjq"]
+
+[ext_resource type="Script" uid="uid://db2228qhlnmwd" path="res://entities/player/bullet_weapon.gd" id="1_nqbaw"]
+[ext_resource type="Texture2D" uid="uid://l54vgvqqdcv1" path="res://assets/textures/mario_and_items.png" id="2_nqbaw"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_nqbaw"]
+radius = 5.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q87me"]
+atlas = ExtResource("2_nqbaw")
+region = Rect2(0, 144, 18, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_64urp"]
+atlas = ExtResource("2_nqbaw")
+region = Rect2(18, 144, 18, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_heabk"]
+atlas = ExtResource("2_nqbaw")
+region = Rect2(36, 144, 18, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4ucm7"]
+atlas = ExtResource("2_nqbaw")
+region = Rect2(54, 144, 18, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_g8v4i"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q87me")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_64urp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_heabk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4ucm7")
+}],
+"loop": true,
+"name": &"default",
+"speed": 12.0
+}]
+
+[node name="BulletWeapon" type="CharacterBody2D" unique_id=1976270729]
+collision_layer = 2
+script = ExtResource("1_nqbaw")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1072354608]
+shape = SubResource("CircleShape2D_nqbaw")
+
+[node name="Sprite2D" type="AnimatedSprite2D" parent="." unique_id=850594784]
+sprite_frames = SubResource("SpriteFrames_g8v4i")
+frame_progress = 0.34534362
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="." unique_id=1631255942]
+position = Vector2(6, -5)
+rect = Rect2(-12, 0, 11, 10)
+
+[node name="TimeToLive" type="Timer" parent="." unique_id=707592470]
+wait_time = 10.0
+one_shot = true
+autostart = true
+
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]
+[connection signal="timeout" from="TimeToLive" to="." method="_on_time_to_live_timeout"]

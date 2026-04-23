@@ -1,0 +1,66 @@
+[gd_scene format=3 uid="uid://cxp3wc76i3xws"]
+
+[ext_resource type="Script" uid="uid://d0vpkppvhvbfy" path="res://entities/enemies/bullet_turret.gd" id="1_i0vb1"]
+[ext_resource type="Texture2D" uid="uid://stgoamyahn2u" path="res://assets/textures/enemies.png" id="2_i0vb1"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fc3u5"]
+atlas = ExtResource("2_i0vb1")
+region = Rect2(486, 216, 18, 36)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kigsn"]
+atlas = ExtResource("2_i0vb1")
+region = Rect2(504, 216, 18, 36)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_emi16"]
+atlas = ExtResource("2_i0vb1")
+region = Rect2(522, 216, 18, 36)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j5la7"]
+atlas = ExtResource("2_i0vb1")
+region = Rect2(540, 216, 18, 36)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_blra8"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fc3u5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kigsn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_emi16")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j5la7")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_i0vb1"]
+radius = 3.0
+
+[node name="BulletTurret" type="Node2D" unique_id=822210755]
+script = ExtResource("1_i0vb1")
+
+[node name="AnimatedSprite" type="AnimatedSprite2D" parent="." unique_id=1888076922]
+scale = Vector2(0.5, 0.5)
+sprite_frames = SubResource("SpriteFrames_blra8")
+frame_progress = 0.5243142
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="." unique_id=139084911]
+position = Vector2(0, -8)
+rect = Rect2(-3, 0, 6, 6)
+
+[node name="Area2D" type="Area2D" parent="." unique_id=2128579110]
+collision_layer = 4
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=581358942]
+position = Vector2(0, -5)
+shape = SubResource("CircleShape2D_i0vb1")
+
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

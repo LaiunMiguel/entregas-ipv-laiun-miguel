@@ -1,0 +1,153 @@
+[gd_scene format=3 uid="uid://dva7urch5tmum"]
+
+[ext_resource type="Texture2D" uid="uid://stgoamyahn2u" path="res://assets/textures/enemies.png" id="1_x15t2"]
+[ext_resource type="Script" uid="uid://cpgw05t5a18u" path="res://entities/enemies/turret.gd" id="2_iwplw"]
+[ext_resource type="PackedScene" uid="uid://cxp3wc76i3xws" path="res://entities/enemies/BulletTurret.tscn" id="3_x15t2"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e7smu"]
+atlas = ExtResource("1_x15t2")
+region = Rect2(306, 108, 18, 36)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hkaow"]
+atlas = ExtResource("1_x15t2")
+region = Rect2(324, 108, 18, 36)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_myqr2"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e7smu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hkaow")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 1.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ltjpe"]
+radius = 120.22063
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_x15t2"]
+size = Vector2(18, 26)
+
+[sub_resource type="Animation" id="Animation_e7smu"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:offset")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:modulate:r")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1.0]
+}
+
+[sub_resource type="Animation" id="Animation_x15t2"]
+resource_name = "fire"
+length = 0.5
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:offset")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-5, -1), Vector2(0, 2)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.033333335, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1.1, 1.1), Vector2(0.9, 0.9)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:modulate:r")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.16666667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [1.0, 10.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_e7smu"]
+_data = {
+&"RESET": SubResource("Animation_e7smu"),
+&"fire": SubResource("Animation_x15t2")
+}
+
+[node name="Turret" type="AnimatedSprite2D" unique_id=1378954420]
+sprite_frames = SubResource("SpriteFrames_myqr2")
+animation = &"idle"
+frame_progress = 0.44423535
+offset = Vector2(1, 0)
+script = ExtResource("2_iwplw")
+BulletScene = ExtResource("3_x15t2")
+
+[node name="FireTimer" type="Timer" parent="." unique_id=1514833800]
+autostart = true
+
+[node name="Area2D" type="Area2D" parent="." unique_id=384820711]
+collision_layer = 4
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1400720811]
+shape = SubResource("CircleShape2D_ltjpe")
+
+[node name="hurtBox" type="Area2D" parent="." unique_id=611199085]
+collision_layer = 4
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="hurtBox" unique_id=1259092410]
+position = Vector2(0, 5)
+shape = SubResource("RectangleShape2D_x15t2")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=847228701]
+libraries/ = SubResource("AnimationLibrary_e7smu")
+
+[connection signal="timeout" from="FireTimer" to="." method="_on_fire_timer_timeout"]
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
+[connection signal="body_entered" from="hurtBox" to="." method="_on_hurt_box_body_entered"]
