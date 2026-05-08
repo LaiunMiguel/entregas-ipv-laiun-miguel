@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://d3n5sui18oopd"]
+
+[ext_resource type="Texture2D" uid="uid://bjtttf2aevx6s" path="res://assets/textures/tuberia.png" id="1_44wj4"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_l03kp"]
+size = Vector2(59, 108)
+
+[node name="Tuberia" type="StaticBody2D" unique_id=1364205641]
+
+[node name="Cuerpo" type="Sprite2D" parent="." unique_id=986776739]
+position = Vector2(0, 29)
+scale = Vector2(1, 1.469697)
+texture = ExtResource("1_44wj4")
+
+[node name="Boca" type="Sprite2D" parent="." unique_id=175733956]
+position = Vector2(5.1259995e-06, -18.5)
+scale = Vector2(1.090909, 0.43939394)
+texture = ExtResource("1_44wj4")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1632828843]
+position = Vector2(-0.5, 22)
+shape = SubResource("RectangleShape2D_l03kp")

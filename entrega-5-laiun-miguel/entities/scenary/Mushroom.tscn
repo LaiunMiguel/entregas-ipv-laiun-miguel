@@ -1,0 +1,43 @@
+[gd_scene format=3 uid="uid://cmdisfch01ar4"]
+
+[ext_resource type="Texture2D" uid="uid://l54vgvqqdcv1" path="res://assets/textures/mario_and_items.png" id="1_t6t67"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_evab5"]
+atlas = ExtResource("1_t6t67")
+region = Rect2(0, 90, 18, 18)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ufr5s"]
+atlas = ExtResource("1_t6t67")
+region = Rect2(18, 90, 18, 18)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_eplhv"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_evab5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ufr5s")
+}],
+"loop": true,
+"name": &"default",
+"speed": 2.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_t6t67"]
+radius = 7.071068
+
+[node name="Mushroom" type="RigidBody2D" unique_id=508791070]
+collision_layer = 8
+collision_mask = 11
+mass = 0.75
+gravity_scale = 0.725
+
+[node name="Sprite2D" type="AnimatedSprite2D" parent="." unique_id=113725706]
+sprite_frames = SubResource("SpriteFrames_eplhv")
+autoplay = "default"
+frame_progress = 0.5169927
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=821105248]
+position = Vector2(0, 1)
+shape = SubResource("CircleShape2D_t6t67")

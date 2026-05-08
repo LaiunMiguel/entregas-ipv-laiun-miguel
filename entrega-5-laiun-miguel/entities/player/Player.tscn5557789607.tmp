@@ -1,0 +1,100 @@
+[gd_scene format=3 uid="uid://b3delv3vhgb1q"]
+
+[ext_resource type="Script" uid="uid://dw2w07n77hx0e" path="res://entities/player/player.gd" id="1_l3c03"]
+[ext_resource type="Texture2D" uid="uid://l54vgvqqdcv1" path="res://assets/textures/mario_and_items.png" id="2_l3c03"]
+[ext_resource type="PackedScene" uid="uid://b0j0q32eh2rnl" path="res://entities/player/Weapon.tscn" id="3_l3c03"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eaotn"]
+atlas = ExtResource("2_l3c03")
+region = Rect2(0, 72, 18, 18)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g3lhm"]
+atlas = ExtResource("2_l3c03")
+region = Rect2(126, 72, 18, 18)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4pwj0"]
+atlas = ExtResource("2_l3c03")
+region = Rect2(72, 72, 18, 18)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fmb3c"]
+atlas = ExtResource("2_l3c03")
+region = Rect2(90, 72, 18, 18)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rl6fg"]
+atlas = ExtResource("2_l3c03")
+region = Rect2(108, 72, 18, 18)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l3c03"]
+atlas = ExtResource("2_l3c03")
+region = Rect2(18, 72, 18, 18)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_q57vx"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_eaotn")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g3lhm")
+}],
+"loop": true,
+"name": &"jump",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4pwj0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fmb3c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rl6fg")
+}],
+"loop": true,
+"name": &"move",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l3c03")
+}],
+"loop": true,
+"name": &"stop",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_eaotn"]
+size = Vector2(64, 64)
+
+[node name="Player" type="CharacterBody2D" unique_id=1641427890]
+collision_layer = 2
+collision_mask = 11
+script = ExtResource("1_l3c03")
+
+[node name="Sprite" type="AnimatedSprite2D" parent="." unique_id=1417117623]
+scale = Vector2(4, 4)
+sprite_frames = SubResource("SpriteFrames_q57vx")
+animation = &"move"
+frame_progress = 0.57308567
+
+[node name="Weapon" parent="." unique_id=1036930613 instance=ExtResource("3_l3c03")]
+visible = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=992236123]
+position = Vector2(0.0635071, -0.165405)
+shape = SubResource("RectangleShape2D_eaotn")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=235402163]
+position = Vector2(0, -124)
+zoom = Vector2(1.1, 1.1)
+limit_left = 0
+limit_top = -2
+limit_right = 3400
+limit_bottom = 9999998
+position_smoothing_enabled = true

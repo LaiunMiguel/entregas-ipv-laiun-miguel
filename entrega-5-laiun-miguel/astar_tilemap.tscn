@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://bvh7m8i7r5k0v"]
+
+[ext_resource type="Script" uid="uid://cg46eadt5nxis" path="res://astar_tilemap.gd" id="1_etm0h"]
+[ext_resource type="Texture2D" uid="uid://ddpwo21njc4n6" path="res://assets/gray_square.png" id="1_w34u3"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_42f37"]
+texture = ExtResource("1_w34u3")
+0:0/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_hgi3k"]
+sources/0 = SubResource("TileSetAtlasSource_42f37")
+
+[node name="AstarTilemap" type="TileMapLayer" unique_id=467961426]
+tile_set = SubResource("TileSet_hgi3k")
+script = ExtResource("1_etm0h")
