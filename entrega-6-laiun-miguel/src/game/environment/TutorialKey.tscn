@@ -1,0 +1,56 @@
+[gd_scene format=3 uid="uid://dl7hmim0f54u6"]
+
+[ext_resource type="Script" uid="uid://dn72era8q0rbr" path="res://src/game/environment/tutorial_key.gd" id="1_0qmgs"]
+[ext_resource type="FontFile" uid="uid://bqt658n8k8iip" path="res://assets/fonts/DungeonFont.ttf" id="1_76y5i"]
+[ext_resource type="FontFile" uid="uid://i1qus13x2d0u" path="res://assets/fonts/Roboto-Bold.ttf" id="2_kadek"]
+[ext_resource type="Texture2D" uid="uid://nmkx5eavai36" path="res://assets/textures/ui/Controller&KeyPrompts/Keyboard & Mouse/Blanks/Blank_Black_Normal.png" id="3_0qmgs"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_8qo07"]
+font = ExtResource("1_76y5i")
+font_color = Color(1, 1, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_kadek"]
+font = ExtResource("2_kadek")
+font_size = 12
+font_color = Color(1, 0.9607843, 1, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_k0lpn"]
+texture = ExtResource("3_0qmgs")
+region_rect = Rect2(8, 8, 88, 88)
+
+[node name="TutorialKey" type="Node2D" unique_id=1626121591]
+script = ExtResource("1_0qmgs")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1107491984]
+offset_right = 47.0
+offset_bottom = 40.0
+alignment = 1
+
+[node name="KeyAction" type="Label" parent="VBoxContainer" unique_id=741646951]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Jump"
+label_settings = SubResource("LabelSettings_8qo07")
+horizontal_alignment = 1
+
+[node name="Key" type="Label" parent="VBoxContainer" unique_id=1581153494]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Space"
+label_settings = SubResource("LabelSettings_kadek")
+
+[node name="PanelContainer" type="PanelContainer" parent="VBoxContainer/Key" unique_id=1107261291]
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.047000002
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -8.052
+offset_top = -1.0
+offset_right = 12.0
+offset_bottom = 4.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_k0lpn")

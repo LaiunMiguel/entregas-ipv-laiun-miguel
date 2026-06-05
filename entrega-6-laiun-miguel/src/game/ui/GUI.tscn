@@ -1,0 +1,130 @@
+[gd_scene format=3 uid="uid://xy65fxd50q6v"]
+
+[ext_resource type="Script" uid="uid://1cjmgssymms6" path="res://src/game/ui/GUIManager.gd" id="1"]
+[ext_resource type="Texture2D" uid="uid://tsc8enkwhq1k" path="res://assets/textures/ui/GUISprite.png" id="2"]
+
+[sub_resource type="AtlasTexture" id="2"]
+atlas = ExtResource("2")
+region = Rect2(18, 83, 59, 9)
+
+[sub_resource type="AtlasTexture" id="3"]
+atlas = ExtResource("2")
+region = Rect2(18, 67, 59, 9)
+
+[sub_resource type="AtlasTexture" id="4"]
+atlas = ExtResource("2")
+region = Rect2(64, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="5"]
+atlas = ExtResource("2")
+region = Rect2(16, 16, 16, 16)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_byo0w"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_byo0w"]
+bg_color = Color(0.59487706, 0.5948768, 0, 1)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_85cfu"]
+atlas = ExtResource("2")
+region = Rect2(80, 80, 64, 16)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_85cfu"]
+bg_color = Color(0.046658687, 0.34070447, 0.56475824, 1)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_58gqf"]
+atlas = ExtResource("2")
+region = Rect2(16, 51, 64, 9)
+
+[node name="GUI" type="Control" unique_id=57881772]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1")
+fade_duration = 2.0
+fade_delay = 1.0
+
+[node name="StatsContainer" type="Control" parent="." unique_id=1472632234]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="HpProgress1" type="TextureProgressBar" parent="StatsContainer" unique_id=991828187]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 14.0
+offset_right = 73.0
+offset_bottom = 9.0
+max_value = 10.0
+value = 5.0
+texture_under = SubResource("2")
+texture_progress = SubResource("3")
+
+[node name="HpProgress2" type="TextureProgressBar" parent="StatsContainer" unique_id=241894329]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = -1.0
+offset_right = 15.0
+offset_bottom = 16.0
+max_value = 10.0
+value = 5.0
+fill_mode = 3
+texture_under = SubResource("4")
+texture_progress = SubResource("5")
+
+[node name="StaminaProgress" type="ProgressBar" parent="StatsContainer" unique_id=924870795]
+layout_mode = 0
+offset_left = 8.96209
+offset_top = 18.0
+offset_right = 58.96209
+offset_bottom = 21.96209
+rotation = 1.5707964
+theme_override_styles/background = SubResource("StyleBoxEmpty_byo0w")
+theme_override_styles/fill = SubResource("StyleBoxFlat_byo0w")
+max_value = 10.0
+value = 10.0
+fill_mode = 1
+show_percentage = false
+
+[node name="NinePatchRect" type="NinePatchRect" parent="StatsContainer/StaminaProgress" unique_id=1649917065]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -1.999999
+offset_top = -2.5228806
+offset_right = 1.0
+offset_bottom = 3.9137306
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("AtlasTexture_85cfu")
+axis_stretch_horizontal = 2
+
+[node name="ManaProgress" type="ProgressBar" parent="StatsContainer" unique_id=819578626]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 9.0
+offset_right = 70.0
+offset_bottom = 15.0
+theme_override_styles/background = SubResource("StyleBoxEmpty_byo0w")
+theme_override_styles/fill = SubResource("StyleBoxFlat_85cfu")
+max_value = 10.0
+value = 5.0
+show_percentage = false
+
+[node name="NinePatchRect" type="NinePatchRect" parent="StatsContainer/ManaProgress" unique_id=1936481608]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("AtlasTexture_58gqf")

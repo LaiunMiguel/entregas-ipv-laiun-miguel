@@ -1,0 +1,25 @@
+[gd_scene format=3 uid="uid://bitu0wun1hcmp"]
+
+[ext_resource type="Script" uid="uid://brg0ht3a6tjyc" path="res://src/game/environment/pickables/healing_item.gd" id="1_h6arj"]
+[ext_resource type="Texture2D" uid="uid://ihrb453f3jpu" path="res://assets/textures/items/mushrooms.png" id="1_yd7va"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h6arj"]
+atlas = ExtResource("1_yd7va")
+region = Rect2(48, 64, 16, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5ry2k"]
+
+[node name="Healing" type="Node2D" unique_id=439484840]
+script = ExtResource("1_h6arj")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=2033382670]
+texture = SubResource("AtlasTexture_h6arj")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=725514445]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1179705768]
+shape = SubResource("RectangleShape2D_5ry2k")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

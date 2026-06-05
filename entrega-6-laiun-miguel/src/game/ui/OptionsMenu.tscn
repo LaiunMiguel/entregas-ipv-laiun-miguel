@@ -1,0 +1,225 @@
+[gd_scene format=3 uid="uid://k2xqj2ufr61j"]
+
+[ext_resource type="FontFile" path="res://assets/fonts/Default-Big.tres" id="1_e2itt"]
+[ext_resource type="Script" uid="uid://fvhu6m870nwe" path="res://src/game/ui/options_menu.gd" id="1_vrbqv"]
+[ext_resource type="FontFile" path="res://assets/fonts/Default-Medium.tres" id="2_vrbqv"]
+[ext_resource type="PackedScene" uid="uid://blld6lqna6jwt" path="res://src/game/ui/action_key.tscn" id="4_vsm68"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vsm68"]
+content_margin_left = 0.0
+content_margin_top = 0.0
+content_margin_right = 0.0
+content_margin_bottom = 0.0
+bg_color = Color(0, 0, 0, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.49019608, 0.41960785, 0, 1)
+corner_radius_top_left = 30
+corner_radius_top_right = 30
+corner_radius_bottom_right = 30
+corner_radius_bottom_left = 30
+corner_detail = 2
+
+[sub_resource type="LabelSettings" id="LabelSettings_n03et"]
+font = ExtResource("1_e2itt")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qad13"]
+content_margin_left = 5.0
+content_margin_top = 3.0
+content_margin_right = 5.0
+content_margin_bottom = 3.0
+bg_color = Color(0, 0.29803923, 0.6392157, 0.2509804)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.2901961, 0.2901961, 0.2901961, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4s0t4"]
+content_margin_left = 5.0
+content_margin_top = 3.0
+content_margin_right = 5.0
+content_margin_bottom = 3.0
+bg_color = Color(0, 0.29803923, 0.6392157, 0.62352943)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.2901961, 0.2901961, 0.2901961, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_q2utd"]
+content_margin_left = 5.0
+content_margin_top = 3.0
+content_margin_right = 5.0
+content_margin_bottom = 3.0
+bg_color = Color(0, 0.29803923, 0.6392157, 0.4392157)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.2901961, 0.2901961, 0.2901961, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xddha"]
+content_margin_left = 5.0
+content_margin_top = 3.0
+content_margin_right = 5.0
+content_margin_bottom = 3.0
+bg_color = Color(0, 0, 0, 0.2509804)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.2901961, 0.2901961, 0.2901961, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wgqpa"]
+content_margin_left = 5.0
+content_margin_top = 3.0
+content_margin_right = 5.0
+content_margin_bottom = 3.0
+bg_color = Color(0.5882353, 0.6392157, 0, 0.4)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.2901961, 0.2901961, 0.2901961, 1)
+
+[node name="OptionsMenu" type="Control" unique_id=681141861]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1_vrbqv")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1886598068]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.25098)
+
+[node name="Panel" type="Panel" parent="." unique_id=1990053786]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_vsm68")
+
+[node name="Label" type="Label" parent="Panel" unique_id=491034377]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -22.0
+offset_top = 4.0
+offset_right = 22.0
+offset_bottom = 41.0
+grow_horizontal = 2
+text = "Options
+"
+label_settings = SubResource("LabelSettings_n03et")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ResumeButton" type="Button" parent="Panel" unique_id=674502908]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -27.5
+offset_top = -27.0
+offset_right = 27.5
+offset_bottom = -4.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_fonts/font = ExtResource("2_vrbqv")
+theme_override_styles/normal = SubResource("StyleBoxFlat_qad13")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxFlat_qad13")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_4s0t4")
+theme_override_styles/pressed_mirrored = SubResource("StyleBoxFlat_4s0t4")
+theme_override_styles/hover = SubResource("StyleBoxFlat_q2utd")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxFlat_q2utd")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_q2utd")
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxFlat_q2utd")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_xddha")
+theme_override_styles/disabled_mirrored = SubResource("StyleBoxFlat_xddha")
+theme_override_styles/focus = SubResource("StyleBoxFlat_wgqpa")
+text = "Return"
+
+[node name="Panel" type="Panel" parent="Panel" unique_id=99011039]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 10.0
+offset_top = 24.0
+offset_right = -10.0
+offset_bottom = -29.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Panel/Panel" unique_id=1646211158]
+layout_mode = 0
+offset_right = 269.0
+offset_bottom = 109.0
+
+[node name="ContenedorDeInputs" type="VBoxContainer" parent="Panel/Panel/ScrollContainer" unique_id=546026430]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="ActionKey" parent="Panel/Panel/ScrollContainer/ContenedorDeInputs" unique_id=2145943159 instance=ExtResource("4_vsm68")]
+layout_mode = 2
+action_id = &"move_left"
+action_name = &"Left"
+
+[node name="ActionKey2" parent="Panel/Panel/ScrollContainer/ContenedorDeInputs" unique_id=132496639 instance=ExtResource("4_vsm68")]
+layout_mode = 2
+action_id = &"move_right"
+action_name = &"Right"
+
+[node name="ActionKey3" parent="Panel/Panel/ScrollContainer/ContenedorDeInputs" unique_id=356660003 instance=ExtResource("4_vsm68")]
+layout_mode = 2
+action_id = &"jump"
+action_name = &"Jump"
+
+[node name="ActionKey4" parent="Panel/Panel/ScrollContainer/ContenedorDeInputs" unique_id=1299514951 instance=ExtResource("4_vsm68")]
+layout_mode = 2
+action_id = &"dash"
+action_name = &"Dash"
+
+[node name="ActionKey5" parent="Panel/Panel/ScrollContainer/ContenedorDeInputs" unique_id=1414327640 instance=ExtResource("4_vsm68")]
+layout_mode = 2
+action_id = &"attack_weapon1"
+action_name = &"Attack"
+
+[node name="ActionKey6" parent="Panel/Panel/ScrollContainer/ContenedorDeInputs" unique_id=475517013 instance=ExtResource("4_vsm68")]
+layout_mode = 2
+action_id = &"attack_weapon2"
+action_name = &"Second Attack"
+
+[node name="ActionKey7" parent="Panel/Panel/ScrollContainer/ContenedorDeInputs" unique_id=1149009059 instance=ExtResource("4_vsm68")]
+layout_mode = 2
+action_id = &"attack_weapon3"
+action_name = &"Special"
+
+[node name="ActionKey8" parent="Panel/Panel/ScrollContainer/ContenedorDeInputs" unique_id=1936459796 instance=ExtResource("4_vsm68")]
+layout_mode = 2
+action_id = &"weapon_next"
+action_name = &"Next Weapon"
+
+[node name="ActionKey9" parent="Panel/Panel/ScrollContainer/ContenedorDeInputs" unique_id=88180894 instance=ExtResource("4_vsm68")]
+layout_mode = 2
+action_id = &"weapon_prev"
+action_name = &"Previus Weapon"
+
+[connection signal="pressed" from="Panel/ResumeButton" to="." method="_on_resume_button_pressed"]
